@@ -16,9 +16,11 @@ General
 
 ## Software
 
+General
 * [Apophysis](http://www.apophysis.org/downloads.html)
 * [Electric Sheep](https://electricsheep.org/)
 
 3D
-* [Visions of Chaos](http://softology.com.au/voc.htm) [example](https://www.youtube.com/watch?v=J3lqgj7PxFY)
-* [IFS Builder 3D](http://fractals.nsu.ru/builder3d_en.htm)
+* [Visions of Chaos](http://softology.com.au/voc.htm) [examples](https://softology.com.au/gallery/gallery.htm) [animated example](https://www.youtube.com/watch?v=J3lqgj7PxFY)
+* [IFS Builder 3D](http://fractals.nsu.ru/builder3d_en.htm) [examples](http://fractals.nsu.ru/gallery_en.htm)
+* [Fractracer](http://fractracer.com/)
