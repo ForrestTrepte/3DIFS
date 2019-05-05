@@ -24,3 +24,7 @@ General
 * [Visions of Chaos](http://softology.com.au/voc.htm) [examples](https://softology.com.au/gallery/gallery.htm) [animated example](https://www.youtube.com/watch?v=J3lqgj7PxFY)
 * [IFS Builder 3D](http://fractals.nsu.ru/builder3d_en.htm) [examples](http://fractals.nsu.ru/gallery_en.htm)
 * [Fractracer](http://fractracer.com/)
+
+## TODO: Sources that haven't yet been investigated
+
+* GPUIFS [application](https://www.cs.uaf.edu/~olawlor/2011/gpuifs/), [paper](https://www.cs.uaf.edu/~olawlor/papers/2011/ifs/lawlor_ifs_2011.pdf)
