@@ -34,8 +34,8 @@ namespace IFS
             if (meshFilter == null)
             {
                 meshFilter = gameObject.AddComponent<MeshFilter>();
-                meshFilter.mesh = VisualizeToMesh();
             }
+            meshFilter.mesh = VisualizeToMesh();
         }
 
         private Mesh VisualizeToMesh()
