@@ -38,7 +38,8 @@ namespace IFS
 
         private Vector3 PolygonPoint(int index, int pointPolygonNumberOfSides, float pointPolygonDiameter, Vector3 right, Vector3 up)
         {
-            float angle = Mathf.PI * 2 * index / pointPolygonNumberOfSides;
+            // Negative index for clockwise winding order.
+            float angle = Mathf.PI * 2 * -index / pointPolygonNumberOfSides;
             Vector3 point = right * Mathf.Cos(angle) * pointPolygonDiameter + up * Mathf.Sin(angle) * pointPolygonDiameter;
             return point;
         }

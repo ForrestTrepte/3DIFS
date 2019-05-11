@@ -502,6 +502,7 @@ MonoBehaviour:
   NumberOfRenderedPoints: 10000
   PointPolygonNumberOfSides: 5
   PointPolygonDiameter: 0.01
+  CameraAngleUpdateDelta: 5
 --- !u!4 &1063726311
 Transform:
   m_ObjectHideFlags: 0
