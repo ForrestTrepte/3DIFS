@@ -17,5 +17,10 @@ namespace IFS
             unityTransform.localEulerAngles = Rotation;
             unityTransform.localScale = Scale;
         }
+
+        public Matrix4x4 GetMatrix()
+        {
+            return Matrix4x4.TRS(Position, Quaternion.Euler(Rotation), Scale);
+        }
     }
 }
