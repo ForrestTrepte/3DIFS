@@ -64,6 +64,9 @@ namespace IFS
 
         public void OnDefinitionChanged()
         {
+            if (!isActiveAndEnabled)
+                return;
+
             needsUpdate = true;
         }
 

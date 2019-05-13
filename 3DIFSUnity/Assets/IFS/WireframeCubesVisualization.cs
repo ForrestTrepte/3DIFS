@@ -28,6 +28,9 @@ namespace IFS
 
         public void OnDefinitionChanged()
         {
+            if (!isActiveAndEnabled)
+                return;
+
             Visualize(definition?.Definition);
         }
 
