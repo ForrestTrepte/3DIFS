@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace IFS
 {
-    public class PointCloudPolygonMesh
+    public class PointCloudPolygonMeshSource : IProceduralMeshSource
     {
-        public Vector3[] Vertices;
-        public int[] Indices;
+        public Vector3[] Vertices { get; private set; }
+        public int[] Indices { get; private set; }
 
         public void Init(int numberOfSides, float diameter, Vector3 right, Vector3 up)
         {

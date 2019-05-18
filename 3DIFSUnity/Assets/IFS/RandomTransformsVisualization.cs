@@ -14,7 +14,8 @@ namespace IFS
         public float CameraAngleUpdateDelta = 5.0f;
 
         private IfsDefinitionBehaviour definition;
-        private PointCloudMesh pcm = new PointCloudMesh();
+        private PointCloudPolygonMeshSource polygon = new PointCloudPolygonMeshSource();
+        private ProceduralMesh pm = new ProceduralMesh();
         private bool needsUpdate = true;
         private Vector3 cameraUp;
         private Vector3 cameraRight;
@@ -77,15 +78,20 @@ namespace IFS
             {
                 meshFilter = gameObject.AddComponent<MeshFilter>();
             }
-            meshFilter.mesh = VisualizeToMesh();
+            if (meshFilter.mesh == null)
+            {
+                meshFilter.mesh = new Mesh();
+            }
+            VisualizeToMesh(meshFilter.mesh);
         }
 
-        private Mesh VisualizeToMesh()
+        private void VisualizeToMesh(Mesh mesh)
         {
             Random.InitState(RandomSeed);
             Matrix4x4[] transforms = definition.Definition.GetMatrices();
-            // TODO: Update in response to camera movement.
-            pcm.Init(NumberOfRenderedPoints, PointPolygonNumberOfSides, PointPolygonDiameter, cameraRight, cameraUp);
+            polygon.Init(PointPolygonNumberOfSides, PointPolygonDiameter, cameraRight, cameraUp);
+            pm.Reset();
+
             Vector4 p = new Vector4(0, 0, 0, 1);
             for (int i = 0; i < NumberOfWarmUpPoints + NumberOfRenderedPoints; ++i)
             {
@@ -94,11 +100,11 @@ namespace IFS
                 p = transforms[transformIndex] * p;
                 if (i >= NumberOfWarmUpPoints)
                 {
-                    pcm.Add(p);
+                    pm.AddAtPosition(polygon, p);
                 }
             }
 
-            return pcm.ToMesh();
+            pm.ToMesh(mesh);
         }
     }
 }
