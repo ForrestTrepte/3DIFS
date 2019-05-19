@@ -29,6 +29,24 @@ namespace IFS
             }
         }
 
+        public void AddTransformed(IProceduralMeshSource source, Matrix4x4 transform)
+        {
+            int polygonIndicesLength = source.Indices.Length;
+            for (int i = 0; i < polygonIndicesLength; ++i)
+            {
+                indices.Add(vertices.Count + source.Indices[i]);
+            }
+
+            int polygonVerticesLength = source.Vertices.Length;
+            for (int i = 0; i < polygonVerticesLength; ++i)
+            {
+                Vector4 vertex = source.Vertices[i];
+                vertex.w = 1.0f;
+                Vector3 transformed = transform * vertex;
+                vertices.Add(transformed);
+            }
+        }
+
         public void ToMesh(Mesh mesh)
         {
             mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;

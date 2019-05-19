@@ -547,7 +547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f8b44e34cd2b54a959790a8b90399a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelOfRecursion: 0
+  LevelOfRecursion: 6
 --- !u!23 &1251920187
 MeshRenderer:
   m_ObjectHideFlags: 0

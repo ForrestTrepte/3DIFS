@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace IFS
@@ -6,6 +7,7 @@ namespace IFS
     public class RecursiveTransformsVisualization : MonoBehaviour
     {
         public float LevelOfRecursion;
+        public int LevelOfRecursionInt { get { return Mathf.CeilToInt(LevelOfRecursion); } }
 
         private IfsDefinitionBehaviour definition;
         private CubeMeshSource cube = new CubeMeshSource();
@@ -53,9 +55,26 @@ namespace IFS
         private void VisualizeToMesh(Mesh mesh)
         {
             cube.Init();
+            Matrix4x4[] transforms = definition.Definition.GetMatrices();
             pm.Reset();
-            pm.AddAtPosition(cube, Vector3.zero);
+            VisualizeToMeshRecursive(Matrix4x4.identity, 0, transforms);
             pm.ToMesh(mesh);
+        }
+
+        private void VisualizeToMeshRecursive(Matrix4x4 transform, int level, Matrix4x4[] transforms)
+        {
+            if (level >= LevelOfRecursionInt - 1)
+            {
+                // Leaf at final level of recursion. Output with this transform.
+                pm.AddTransformed(cube, transform);
+                return;
+            }
+
+            for (int i = 0; i < transforms.Length; ++i)
+            {
+                Matrix4x4 childTransform = transforms[i] * transform;
+                VisualizeToMeshRecursive(childTransform, level + 1, transforms);
+            }
         }
     }
 }
